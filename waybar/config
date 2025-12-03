@@ -1,0 +1,61 @@
+// FINAL MINIMALIST CONFIGURATION - Adheres to Official Clock Syntax
+{
+    // --- Configuration for the Bar Itself ---
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "spacing": 4,
+
+    // Forces uniform colors
+    "colors": {
+        "background": "#323232",
+        "statusline": "#bbbbbb",
+        "focused_workspace": "#bbbbbb"
+    },
+
+    // --- Modules to display ---
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "sway/window"
+    ],
+    "modules-right": [
+        "temperature",
+        "memory",
+        "network",
+        "clock"
+    ],
+
+    // --- Module Definitions (Glyphs, Fahrenheit, Wi-Fi Only) ---
+
+    "temperature": {
+        // Thermometer Glyph () and Fahrenheit
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
+        "format": " {temperatureC}°C",
+        "critical-threshold": 176
+    },
+
+    "memory": {
+        // Memory/RAM Glyph ()
+        "format": " {percentage}%"
+    },
+
+    "network": {
+        // Wi-Fi Glyph () and simple Up/Down indicators
+        "format-wifi": " ↓{bandwidthDownBytes} ↑{bandwidthUpBytes}",
+        "format-disconnected": " OFF",
+        "tooltip-format": "{essid} ({signalStrength}%)"
+    },
+
+    "clock": {
+        // GUARANTEED FIX: Single strftime block with icons and required format
+        "format": "  {:%m/%d/%y | %I:%M %p}"
+    },
+
+    "sway/mode": {
+        "format": "{}",
+        "tooltip": false
+    }
+}
