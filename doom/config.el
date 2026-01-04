@@ -3,6 +3,8 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 ;;
+;;
+;;
 ;; ┌─────────────────────────────┐
 ;; │ Load custom Elisp dashboard │
 ;; └─────────────────────────────┘
@@ -14,10 +16,13 @@
 ;;       (load! "extras/custom-db-safe.el")
 ;;     (error
 ;;      (message "Backup dashboard also failed: %s" (error-message-string err2))))))
-;;
+
+
 ;; ┌───────────────────────────┐
 ;; │ Load custom ORG dashboard │
 ;; └───────────────────────────┘
+
+
 (defvar +my-org-dashboard-buffer "*my-org-dashboard*"
   "Name of the Org dashboard buffer.")
 
@@ -30,6 +35,14 @@
   (when (yes-or-no-p "Are you sure you want to power off the PC? ")
     (start-process "shutdown" nil "systemctl" "poweroff")))
 
+(defun +my-org-fold-to-level-1 ()
+  "Show only top-level headings and fold the rest."
+  (org-fold-show-all)
+  (org-map-entries
+   (lambda ()
+     (when (> (org-outline-level) 1)
+       (org-fold-hide-entry)))))
+
 (defun +my-org-dashboard ()
   "Open the Org dashboard in a protected buffer."
   (interactive)
@@ -39,7 +52,7 @@
         (erase-buffer)
         (insert-file-contents +my-org-dashboard-file)
         (org-mode)
-        (org-overview)
+        (+my-org-fold-to-level-1)
         (display-line-numbers-mode 0)
         (setq-local indicate-empty-lines nil)
         (setq-local left-margin-width 4)
@@ -59,7 +72,7 @@
         (erase-buffer)
         (insert-file-contents +my-org-dashboard-file)
         (org-mode)
-        (org-overview)
+        (+my-org-fold-to-level-1)
         (display-line-numbers-mode 0)
         (setq-local indicate-empty-lines nil)
         (setq-local left-margin-width 4)
@@ -71,6 +84,8 @@
 
 ;; Make Doom fallback buffer the dashboard
 (setq doom-fallback-buffer-name +my-org-dashboard-buffer)
+
+;;
 ;;
 ;; ┌───────────┐
 ;; │ Autostart │
@@ -120,7 +135,12 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;;(setq doom-griswold-variant 'light) ;; Light mode
+;;(setq doom-griswold-variant 'dark)  ;; Dark mode
+(setq doom-theme 'doom-griswold)
+;;
+;; default
+;;(setq doom-theme 'doom-one)
 ;;
 ;;
 ;;
