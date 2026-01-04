@@ -27,9 +27,6 @@
   (format (concat "%-" (number-to-string width) "s") s))
 
 (defun +my-dashboard-insert-2cols (left-items right-items left-fn right-fn &optional col-width)
-  "Insert LEFT-ITEMS and RIGHT-ITEMS in two centered columns.
-LEFT-FN and RIGHT-FN handle insertion for each column.
-COL-WIDTH defaults to the longest item label length, up to a minimum of 10."
   (let* ((col-width (or col-width
                         (max 1
                              (apply #'max
@@ -90,47 +87,46 @@ COL-WIDTH defaults to the longest item label length, up to a minimum of 10."
 ;; +-----------------------+
 ;; |  Quick Links Section  |
 ;; +-----------------------+
-;(defvar +my-dashboard-quick-links-left
-;  '(("Book" . "~/void/p41n/")
-;    ("Notes" . "~/void/l0g1c/")
-;    ("Tek" . "~/void/s3kt0r/")))
-;
-;(defvar +my-dashboard-quick-links-right
-;  '(("Doom Configs" . "~/.config/doom/")
-;    ("Sway Configs" . "~/.config/sway/")
-;    ("Scratch-pad" . "~/.config/doom/db-scratchpad.org")))
-;
-;(defun +my-dashboard-widget-quick-links ()
-;  "Doom widget function for Quick Links section."
-;  (insert (+my-dashboard--center "Quick Links") "\n")
-;  (+my-dashboard-insert-2cols
-;   +my-dashboard-quick-links-left
-;   +my-dashboard-quick-links-right
-;   ;; Left column buttons
-;   (lambda (item width)
-;     (insert-text-button
-;      (+my-dashboard-pad (car item) width)
-;      'action (lambda (_)
-;                (interactive)
-;                (find-file (cdr item)))
-;      'follow-link t
-;      'help-echo (cdr item)))
-;   ;; Right column buttons
-;   (lambda (item width)
-;     (insert-text-button
-;      (+my-dashboard-pad (car item) width)
-;      'action (lambda (_)
-;                (interactive)
-;                (find-file (cdr item)))
-;      'follow-link t
-;      'help-echo (cdr item))))
-;  (insert "\n"))
+(defvar +my-dashboard-quick-links-left
+  '(("title1" . "~/file/path/")
+    ("title2" . "~/file/path/")
+    ("title3" . "~/file/path")))
+
+(defvar +my-dashboard-quick-links-right
+  '(("Doom Configs" . "~/.config/doom/")
+    ("Sway Configs" . "~/.config/sway/")
+    ("Scratch-pad" . "~/.config/doom/db-scratchpad.org")))
+
+(defun +my-dashboard-widget-quick-links ()
+  "Doom widget function for Quick Links section."
+  (insert (+my-dashboard--center "Quick Links") "\n")
+  (+my-dashboard-insert-2cols
+   +my-dashboard-quick-links-left
+   +my-dashboard-quick-links-right
+   ;; Left column buttons
+   (lambda (item width)
+     (insert-text-button
+      (+my-dashboard-pad (car item) width)
+      'action (lambda (_)
+                (interactive)
+                (find-file (cdr item)))
+      'follow-link t
+      'help-echo (cdr item)))
+   ;; Right column buttons
+   (lambda (item width)
+     (insert-text-button
+      (+my-dashboard-pad (car item) width)
+      'action (lambda (_)
+                (interactive)
+                (find-file (cdr item)))
+      'follow-link t
+      'help-echo (cdr item))))
+  (insert "\n"))
 
 ;; +---------------+
 ;; |  Scratch Pad  |
 ;; +---------------+
 (defun +my-dashboard-widget-scratch-pad ()
-  "Doom widget function for Scratch Pad section."
   (when (file-exists-p +my-dashboard-scratch-pad-file)
     (let ((lines (with-temp-buffer
                    (insert-file-contents +my-dashboard-scratch-pad-file)
@@ -143,7 +139,7 @@ COL-WIDTH defaults to the longest item label length, up to a minimum of 10."
 ;; |  Configuration    |
 ;; +-------------------+
 
-;; Replace Doom's default widget functions with our custom ones
+;; Replace Doom's default widget functions with your custom ones
 (setq +doom-dashboard-functions
       '(doom-dashboard-widget-banner        ;; Keep Doom's banner
         +my-dashboard-widget-run            ;; Your Run section
