@@ -58,3 +58,4 @@
 ;;│ Custom shit │
 ;;╰─────────────╯
 (package! uniline)
+(package! rainbow-mode)
