@@ -1,0 +1,58 @@
+/* Waybar Style - Clean & Minimal */
+
+* {
+    font-family: monospace;
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main bar background */
+window#waybar {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+/* All modules - uniform color and padding */
+#temperature,
+#memory,
+#network,
+#clock,
+#window,
+#mode {
+    background: #1e1e1e;
+    color: #4f4f4f;
+    padding: 0 12px;
+    margin: 2px 4px;
+    border-radius: 4px;
+}
+
+/* Workspaces - different colors */
+#workspaces button {
+    padding: 0 8px;
+    margin: 2px 2px;
+    background: #3a3a3a;
+    color: #888888;
+    border-radius: 4px;
+    border: none;
+}
+
+#workspaces button.focused {
+    background: #5277c3;
+    color: #ffffff;
+}
+
+#workspaces button.visible {
+    background: #4a4a4a;
+    color: #cccccc;
+}
+
+#workspaces button.urgent {
+    background: #c94f4f;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: #555555;
+    color: #ffffff;
+}
