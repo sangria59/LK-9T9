@@ -1,0 +1,42 @@
+There is an option in the configs where you can toggle between an org dashboard and standard custom one. 
+This is where you make your dashboard. Heres what mine looks like. (looks weird here, but works)
+* π
+╭─────────╮╭─────────╮╭───────────╮╭──────────╮
+│ [[file:~/.config/doom/extras/orgboard.org][Edit db]] ││ [[elisp:(+my-org-dashboard-refresh)][Refresh]] ││ [[elisp:(start-process "librewolf" nil "librewolf")][LibreWolf]] ││ [[elisp:(+org-dashboard-poweroff)][Shutdown]] │
+╰─────────╯╰─────────╯╰───────────╯╰──────────╯
+
+* Keybinds
+╭─────────────╮            ╭─────────────╮
+│  Sway - Alt ├────────╮   │  Doom - SPC ├────────────────────────────────╮
+├─────────────╯        │   ├─────────────╯                                │
+| S w s - Toggle Split |   | ~DB                       Reload   - S-h r r |
+|                      |   | Reload last  - S-q l      Quit     - S-q q   |
+| S w v - Split Vert   |   | Org Agenda   - S-o A      Save all - S-s s   |
+|                      |   | Recent Files - f r                           |
+| S w b - Split Hori   |   | Open Proj    - p p        ~Split/Open        |
+|                      |   | Bookmarks    - RET        Right    - C-x 3   |
+| S w F - Floating     |   | Configs      - f P        Below    - C-x 2   |
+|                      |   | Docs         - S-h d h                       |
+| S s s - Screenshot   |   | Reload       - S-h r r   ~Close windows      |
+|                      |   | Quit         - S- q       Current  - C-x 0   |
+| S s S - SS Section   |   | Save all     - S-s        All     - C-x 1    |
+|                      |   |                                              |
+|                      |   | ~Move Between Win         ~Resize Windows    |
+|                      |   | Left     - S-w h          H Shrink - S-w <   |
+|                      |   | Down     - S-w j          H Grow   - S-w >   |
+|                      |   | Up       - S-w k          V Shrink - S-w -   |
+|                      |   | Right    - S-w l          V Grow   - S-w +   |
+|                      |   | Cycle    - C-x o                             |
+|                      |   |                                              |
+|                      |   | ~Swap Windows                                |
+|                      |   | Left     - S-w H                             |
+|                      |   | Down     - S-w J                             |
+|                      |   | Right    - S-w L                             |
+|                      |   | Up       - S-w K                             |
+|                      |   |                                              |
+|                      |   |                                              |
+╰──────────────────────╯   ╰──────────────────────────────────────────────╯
+
+* Notes
+** Info
+Sulforaphane Triggers Lysosomal Exocytosis
