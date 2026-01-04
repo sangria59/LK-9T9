@@ -205,7 +205,7 @@
 
   ;; Base theme face overrides
   ((button :foreground cyan :underline t :weight 'bold)
-   (cursor :background white :foreground fg-alt)
+   (cursor :background red :foreground base2)
    (hl-line :background fg-alt :foreground bg-alt)
   ; (font-lock-doc-face :foreground red)
    ((line-number &override) :foreground base5)
